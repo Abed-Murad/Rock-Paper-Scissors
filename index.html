@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors</title>
+</head>
+<body>
+<script>
+	
+	function computerPlay() {
+		let values = ["rock", "paper" , "scissors"]
+		let result = values[Math.floor(Math.random()*3)]
+		return result.toLowerCase()
+	}
+
+	function playRound(playerSelection , computerSelection) {
+			if (playerSelection == computerSelection ) {
+				return "It's a draw"
+			}else if (playerSelection == "rock" && computerSelection == "paper") {
+				return "You Lose! Paper beats Rock"
+			}else if (playerSelection == "rock" && computerSelection == "scissors") {
+				return "You Won! rock beats scissors"
+			}else if (playerSelection == "paper" && computerSelection == "rock") {
+				return "You Won! Paper beats Rock"
+			}else if (playerSelection == "paper" && computerSelection == "scissors") {
+				return "You Lose! scissors beats paper"
+			}else if (playerSelection == "scissors" && computerSelection == "rock") {
+				return "You Lose! rock beats scissors"
+			}else if (playerSelection == "scissors" && computerSelection == "paper") {
+				return "You Won! scissors beats paper"
+			}
+	}
+
+
+
+	function play() {
+		for (var i = 0; i < 5; i++) {
+				const playerSelection = "rock";
+				const computerSelection = computerPlay()
+				console.info(playRound(playerSelection, computerSelection))
+		}
+	}
+	play()
+</script>
+</body>
+</html>
