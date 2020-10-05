@@ -12,32 +12,51 @@
 		return result.toLowerCase()
 	}
 
+	let playerScore = 0 ;
+	let computerScore= 0; 
+	let draw = 0 ;
 	function playRound(playerSelection , computerSelection) {
 			if (playerSelection == computerSelection ) {
+				draw++;
 				return "It's a draw"
 			}else if (playerSelection == "rock" && computerSelection == "paper") {
+				computerScore++
 				return "You Lose! Paper beats Rock"
 			}else if (playerSelection == "rock" && computerSelection == "scissors") {
+				playerScore++
 				return "You Won! rock beats scissors"
 			}else if (playerSelection == "paper" && computerSelection == "rock") {
+				playerScore++
 				return "You Won! Paper beats Rock"
 			}else if (playerSelection == "paper" && computerSelection == "scissors") {
+				computerScore++
 				return "You Lose! scissors beats paper"
 			}else if (playerSelection == "scissors" && computerSelection == "rock") {
+				computerScore++
 				return "You Lose! rock beats scissors"
 			}else if (playerSelection == "scissors" && computerSelection == "paper") {
+				playerScore++
 				return "You Won! scissors beats paper"
 			}
 	}
 
 
-
 	function play() {
 		for (var i = 0; i < 5; i++) {
-				const playerSelection = "rock";
+				const playerSelection = prompt().toLowerCase()
 				const computerSelection = computerPlay()
 				console.info(playRound(playerSelection, computerSelection))
 		}
+
+		if (playerScore===computerScore) {
+			console.info("It's a draw")
+		}else if (playerScore>computerScore){
+			console.info("The winner is the player")
+
+		}else{
+			console.info("The winner is the computer")
+		}
+
 	}
 	play()
 </script>
