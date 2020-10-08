@@ -4,18 +4,25 @@
 	<title>Rock Paper Scissors</title>
 </head>
 <body>
+	<button id="rockBtn">Rock</button>
+	<button id="paperBtn">Paper</button>
+	<button id="scissorBtn">Scissor</button>
+	<h1 id= "result"></h1>
 <script>
-	
+
+
+	let playerScore = 0 ;
+	let computerScore= 0; 
+	let draw = 0 ;
+
 	function computerPlay() {
 		let values = ["rock", "paper" , "scissors"]
 		let result = values[Math.floor(Math.random()*3)]
 		return result.toLowerCase()
 	}
 
-	let playerScore = 0 ;
-	let computerScore= 0; 
-	let draw = 0 ;
-	function playRound(playerSelection , computerSelection) {
+
+		function playRound(playerSelection , computerSelection) {
 			if (playerSelection == computerSelection ) {
 				draw++;
 				return "It's a draw"
@@ -40,25 +47,37 @@
 			}
 	}
 
-
-	function play() {
-		for (var i = 0; i < 5; i++) {
-				const playerSelection = prompt().toLowerCase()
-				const computerSelection = computerPlay()
-				console.info(playRound(playerSelection, computerSelection))
-		}
-
-		if (playerScore===computerScore) {
-			console.info("It's a draw")
-		}else if (playerScore>computerScore){
-			console.info("The winner is the player")
-
-		}else{
-			console.info("The winner is the computer")
-		}
-
+	function updateLayout() {
+		const resultElement = document.querySelector("#result")
+		resultElement.textContent = `Player              ${playerScore} : ${computerScore}              Computer` 
 	}
-	play()
+
+
+	const rockBtn = document.querySelector("#rockBtn")
+	const paperBtn = document.querySelector("#paperBtn")
+	const scissorBtn = document.querySelector("#scissorBtn")
+
+
+	rockBtn.addEventListener('click' , () =>{
+		const computerSelection = computerPlay()
+		console.log(playRound('rock',computerSelection))
+		updateLayout()
+
+	})
+
+	paperBtn.addEventListener('click' , () =>{
+		const computerSelection = computerPlay()
+		console.log(playRound('paper',computerSelection) )
+		updateLayout()
+
+	})
+	scissorBtn.addEventListener('click', () =>{
+		const computerSelection = computerPlay()
+	console.log(playRound('scissors',computerSelection))
+	updateLayout()
+
+	})
+
 </script>
 </body>
 </html>
